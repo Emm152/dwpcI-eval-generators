@@ -46,6 +46,7 @@ const superHeroTeams = [
   },
 ];
 
+let hero = null;
 // Función que itera sobre los poderes
 function* iteratePowers(superPowers) { 
   for (let i = 0; i < superPowers.length; i++) { 
@@ -58,6 +59,7 @@ function* iteratePowers(superPowers) {
 function* iterateSuperHeores(superHeores) {
   for (let i = 0; i < superHeores.length; i++) {
     const superHeore = superHeores[i];
+    hero = superHeore.name;
     yield* iteratePowers(superHeore.superPowers);
   }
 }
@@ -88,6 +90,7 @@ while (!result.done) {
     // deberia imprimir algo asi
     // > El super poder de immortality le pertenece a Batman
     console.log('Super Power has been found');
+    console.log(`El super heroe con el poder "${result.value}" es: ${hero}`);
     break;
   } else {
     result = generatorObject.next();
